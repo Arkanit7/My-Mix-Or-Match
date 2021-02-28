@@ -1,0 +1,541 @@
+/**********************
+       FONTS
+*********************/
+@font-face {
+  font-family: "Creepy";
+  font-display: swap;
+  src: url(../fonts/creepy.woff2) format("woff2"), url(../fonts/creepy.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lunacy";
+  font-display: swap;
+  src: url(../fonts/lunacy.woff2) format("woff2"), url(../fonts/lunacy.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/**********************
+       GLOBAL
+*********************/
+/* ---------Reset Styles--------- */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-size: 100%;
+  line-height: 1;
+  vertical-align: baseline;
+}
+
+picture,
+img {
+  display: inline-block;
+  vertical-align: top;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button,
+input[type="button"],
+input[type="checkbox"],
+input[type="radio"],
+input[type="submit"] {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul,
+li,
+ol {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: 400;
+}
+
+address {
+  font-style: normal;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *:before,
+  *:after {
+    -webkit-animation-duration: 0.01ms !important;
+            animation-duration: 0.01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: 0.01ms !important;
+            transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/*----------------End of reset styles--------------------*/
+:root {
+  font-family: "Lunacy", fantasy;
+  cursor: url("../assets/cursors/ghost.cur"), auto;
+}
+
+._lock {
+  overflow: hidden;
+}
+
+.container, .overlay__container, .game__container {
+  padding: 0 12px;
+  max-width: 847px;
+  margin: 0 auto;
+}
+
+/**********************
+        CONTENT
+*********************/
+.overlay {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.overlay._hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay._hidden .overlay__text {
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.overlay__container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.overlay__text {
+  text-align: center;
+  color: #ff6d00;
+  font-family: "Creepy", fantasy;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.overlay__text-big {
+  font-size: 100px;
+  margin-bottom: 0.5em;
+}
+
+@media only all and (min-width: 320px) {
+  .overlay__text-big {
+    font-size: calc(100vw * 0.11928 + 61.82903px);
+  }
+}
+
+@media only all and (min-width: 823px) {
+  .overlay__text-big {
+    font-size: 160px;
+  }
+}
+
+.overlay__text-small {
+  font-size: 48px;
+}
+
+@media only all and (min-width: 320px) {
+  .overlay__text-small {
+    font-size: calc(100vw * 0.03181 + 37.82107px);
+  }
+}
+
+@media only all and (min-width: 823px) {
+  .overlay__text-small {
+    font-size: 64px;
+  }
+}
+
+.game {
+  min-height: 100vh;
+  background-image: radial-gradient(#9d5900, #3d2200);
+}
+
+.game__container {
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+@media only all and (min-width: 320px) {
+  .game__container {
+    padding-top: calc(100vw * 0.06362 + 11.64215px);
+    padding-bottom: calc(100vw * 0.06362 + 11.64215px);
+  }
+}
+
+@media only all and (min-width: 823px) {
+  .game__container {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+}
+
+.game__title {
+  color: #ff6d00;
+  font-family: "Creepy", fantasy;
+  text-align: center;
+  font-size: 38px;
+  margin-bottom: 38px;
+}
+
+@media only all and (min-width: 320px) {
+  .game__title {
+    font-size: calc(100vw * 0.11531 + 1.10139px);
+    margin-bottom: calc(100vw * 0.11531 + 1.10139px);
+  }
+}
+
+@media only all and (min-width: 823px) {
+  .game__title {
+    font-size: 96px;
+    margin-bottom: 96px;
+  }
+}
+
+.game__info {
+  color: #ffbb89;
+  font-size: 32px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+@media only all and (min-width: 320px) {
+  .game__info {
+    font-size: calc(100vw * 0.06362 + 11.64215px);
+  }
+}
+
+@media only all and (min-width: 823px) {
+  .game__info {
+    font-size: 64px;
+  }
+}
+
+.game__time {
+  padding-right: 1em;
+}
+
+.game__cards {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(70px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+  gap: 0.25rem;
+  -webkit-perspective: 500px;
+          perspective: 500px;
+}
+
+@media only all and (min-width: 480px) {
+  .game__cards {
+    -ms-grid-columns: (minmax(80px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 0.5rem;
+  }
+}
+
+@media only all and (min-width: 640px) {
+  .game__cards {
+    -ms-grid-columns: (minmax(110px, 1fr))[auto-fit];
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    gap: 1rem;
+  }
+}
+
+.card {
+  position: relative;
+}
+
+.card:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 140%;
+}
+
+.card__front, .card__back {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  overflow: hidden;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  border-radius: 0.75rem;
+  border: thin solid #ff6d00;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+}
+
+.card__front:hover .card__cobweb, .card__back:hover .card__cobweb {
+  width: 41.6%;
+}
+
+.card__front:hover .card__spider, .card__back:hover .card__spider {
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.card__front:hover .card__value, .card__back:hover .card__value {
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.card__front {
+  background-color: #ffbb89;
+  border-color: #333;
+  -webkit-transform: rotateY(-180deg);
+          transform: rotateY(-180deg);
+}
+
+.card__back {
+  background-color: black;
+}
+
+.card__cobweb {
+  position: absolute;
+  width: 37.6%;
+  -webkit-transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+  transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+}
+
+.card__cobweb._top-left {
+  top: 0;
+  left: 0;
+  -webkit-transform: rotate(270deg);
+          transform: rotate(270deg);
+}
+
+.card__cobweb._top-right {
+  top: 0;
+  right: 0;
+}
+
+.card__cobweb._bottom-left {
+  bottom: 0;
+  left: 0;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+.card__cobweb._bottom-right {
+  bottom: 0;
+  right: 0;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.card__cobweb._grey {
+  -webkit-filter: brightness(0) saturate(100%) invert(14%) sepia(0%) saturate(632%) hue-rotate(191deg) brightness(101%) contrast(83%);
+          filter: brightness(0) saturate(100%) invert(14%) sepia(0%) saturate(632%) hue-rotate(191deg) brightness(101%) contrast(83%);
+}
+
+.card__spider-holder {
+  width: 72.8%;
+}
+
+.card__spider {
+  width: 100%;
+  -webkit-transform: translateY(-5%);
+          transform: translateY(-5%);
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+.card__value-holder {
+  width: 72.8%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.card__value {
+  width: 100%;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transition: 0.1s ease-in-out;
+  transition: 0.1s ease-in-out;
+}
+
+.card:hover {
+  cursor: url("../assets/cursors/ghosthover.cur"), auto;
+}
+
+.card._flipped .card__front {
+  -webkit-transform: rotateY(0);
+          transform: rotateY(0);
+}
+
+.card._flipped .card__back {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.card._matched .card__value {
+  -webkit-animation-name: rotation;
+          animation-name: rotation;
+  -webkit-animation-duration: 1.5s;
+          animation-duration: 1.5s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+@-webkit-keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  25% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+  50% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  75% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}
+
+@keyframes rotation {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  25% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+  }
+  50% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  75% {
+    -webkit-transform: rotate(-30deg);
+            transform: rotate(-30deg);
+  }
+  100% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+}

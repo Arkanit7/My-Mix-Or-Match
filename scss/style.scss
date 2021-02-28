@@ -1,0 +1,365 @@
+//pointer-events: none; makes element transparent for clicking
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+@mixin media-wp($_a) {
+  @media only all and (min-width: $_a) {
+    @content;
+  }
+}
+
+@mixin media-wm($_b) {
+  @media only all and (max-width: $_b) {
+    @content;
+  }
+}
+
+@mixin media-hp($_c) {
+  @media only all and (min-height: $_c) {
+    @content;
+  }
+}
+
+@mixin media-hm($_d) {
+  @media only all and (max-hemin: $_d) {
+    @content;
+  }
+}
+
+// @mixin distance-responsive($_a, $_b, $_vw0, $_vw1, $_prop) {
+//   #{$_prop}: #{$_a + px};
+//   @include media_wp(#{$_vw0 + px}) {
+//     #{$_prop}: calc(
+//       #{$_a + px} + (100vw - #{$_vw0 + px}) * (#{$_b} - #{$_a}) / (#{$_vw1} - #{$_vw0})
+//     );
+//   }
+//   @include media_wp(#{$_vw1 + px}) {
+//     #{$_prop}: #{$_b + px};
+//   }
+// }
+
+@mixin responsive-size($_a, $_b, $_vw0, $_vw1, $_props...) {
+  //distance-responsive(наймешне значення, найбільше значення, наймеша ширина екрану, найбільша ширина екрану, prop1, pro2, ...)
+  $_c: ($_b - $_a) / ($_vw1 - $_vw0);
+  @each $_prop in $_props {
+    #{$_prop}: #{$_a + px};
+  }
+  @media only all and (min-width: #{$_vw0 + px}) {
+    @each $_prop in $_props {
+      #{$_prop}: calc(100vw * #{$_c} + #{$_a - $_vw0 * $_c + px});
+    }
+  }
+  @media only all and (min-width: #{$_vw1 + px}) {
+    @each $_prop in $_props {
+      #{$_prop}: #{$_b + px};
+    }
+  }
+}
+
+$sexy-background: linear-gradient(223.58deg, #167524 -1.08%, #c8db81 85.64%);
+$gradient: linear-gradient(to right, #ff8a0a, #d06d00);
+
+$xx-small: 320px;
+$x-small: 480px;
+$small: 576px;
+$normal: 768px;
+$large: 992px;
+$x-large: 1200px;
+$xx-large: 1920px;
+
+$content: 823px;
+
+$trnst: 0.3s ease;
+$delay: 0.5s;
+
+$color1: #eca84d;
+$color2: #29d225;
+$color3: #ff5733;
+$color4: #0a9aff;
+$color5: #ff6d00;
+$color6: #ffbb89;
+
+$grid-border: thin solid silver;
+
+/**********************
+       FONTS
+*********************/
+@import "__fonts.scss";
+
+/**********************
+       GLOBAL
+*********************/
+@import "__reset.scss";
+
+:root {
+  font-family: "Lunacy", fantasy;
+  cursor: url("../assets/cursors/ghost.cur"), auto;
+}
+
+._lock {
+  overflow: hidden;
+}
+
+.container {
+  $padding: 12px;
+  padding: 0 $padding;
+  max-width: $content + $padding * 2;
+  margin: 0 auto;
+}
+
+/**********************
+        CONTENT
+*********************/
+.overlay {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  background-color: rgba($color: #000000, $alpha: 0.7);
+  transition: opacity 0.5s;
+  &._hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+  &._hidden &__text {
+    transform: scale(0);
+  }
+  &__container {
+    @extend .container;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__text {
+    text-align: center;
+    color: $color5;
+    font-family: "Creepy", fantasy;
+
+    transition: 0.5s;
+  }
+  &__text-big {
+    @include responsive-size(
+      100,
+      160,
+      strip-units($xx-small),
+      strip-units($content),
+      font-size
+    );
+    margin-bottom: 0.5em;
+  }
+  &__text-small {
+    @include responsive-size(
+      48,
+      64,
+      strip-units($xx-small),
+      strip-units($content),
+      font-size
+    );
+  }
+}
+
+.wrapper {
+}
+.game {
+  min-height: 100vh;
+  background-image: radial-gradient(#9d5900, #3d2200);
+  &__container {
+    @extend .container;
+    @include responsive-size(
+      32,
+      64,
+      strip-units($xx-small),
+      strip-units($content),
+      padding-top,
+      padding-bottom
+    );
+  }
+  &__title {
+    color: $color5;
+    font-family: "Creepy", fantasy;
+    text-align: center;
+    @include responsive-size(
+      38,
+      96,
+      strip-units($xx-small),
+      strip-units($content),
+      font-size,
+      margin-bottom
+    );
+  }
+  &__info {
+    color: $color6;
+    @include responsive-size(
+      32,
+      64,
+      strip-units($xx-small),
+      strip-units($content),
+      font-size
+    );
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__time {
+    padding-right: 1em;
+  }
+
+  &__flips {
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 0.25rem;
+    @include media-wp($x-small) {
+      grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+      gap: 0.5rem;
+    }
+    @include media-wp(640px) {
+      grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+      gap: 1rem;
+    }
+
+    perspective: 500px;
+  }
+
+  &__card {
+  }
+}
+.card {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: (7 / 5) * 100%;
+  }
+  &__front,
+  &__back {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+
+    overflow: hidden;
+    backface-visibility: hidden;
+
+    border-radius: 0.75rem;
+    border: thin solid $color5;
+
+    transition: transform $delay ease-in-out;
+    &:hover {
+      .card__cobweb {
+        width: 41.6%;
+      }
+      .card__spider {
+        transform: translateY(0);
+      }
+      .card__value {
+        transform: scale(1);
+      }
+    }
+  }
+  &__front {
+    background-color: $color6;
+    border-color: #333;
+
+    transform: rotateY(-180deg);
+  }
+  &__back {
+    background-color: black;
+  }
+  &__cobweb {
+    position: absolute;
+    width: 37.6%;
+
+    transition: width 0.1s ease-in-out, height 0.1s ease-in-out;
+    &._top-left {
+      top: 0;
+      left: 0;
+      transform: rotate(270deg);
+    }
+
+    &._top-right {
+      top: 0;
+      right: 0;
+    }
+
+    &._bottom-left {
+      bottom: 0;
+      left: 0;
+      transform: rotate(180deg);
+    }
+
+    &._bottom-right {
+      bottom: 0;
+      right: 0;
+      transform: rotate(90deg);
+    }
+
+    &._grey {
+      filter: brightness(0) saturate(100%) invert(14%) sepia(0%) saturate(632%)
+        hue-rotate(191deg) brightness(101%) contrast(83%);
+    }
+  }
+  &__spider-holder {
+    width: 72.8%;
+  }
+  &__spider {
+    width: 100%;
+    transform: translateY(-5%);
+    transition: 0.1s ease-in-out;
+  }
+  &__value-holder {
+    width: 72.8%;
+    align-self: center;
+  }
+  &__value {
+    width: 100%;
+    transform: scale(0.9);
+    transition: 0.1s ease-in-out;
+  }
+  &:hover {
+    cursor: url("../assets/cursors/ghosthover.cur"), auto;
+  }
+  &._flipped &__front {
+    transform: rotateY(0);
+  }
+  &._flipped &__back {
+    transform: rotateY(180deg);
+  }
+  &._matched &__value {
+    animation-name: rotation;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-delay: $delay;
+    @keyframes rotation {
+      0% {
+        transform: rotate(0);
+      }
+      25% {
+        transform: rotate(30deg);
+      }
+      50% {
+        transform: rotate(0);
+      }
+      75% {
+        transform: rotate(-30deg);
+      }
+      100% {
+        transform: rotate(0);
+      }
+    }
+  }
+}

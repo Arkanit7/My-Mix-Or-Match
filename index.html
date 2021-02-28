@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="theme-color" content="#ff6d00">
+	<meta name="description" content="A card matching game.">
+	<title>Mix-Or-Match</title>
+	<link rel="shortcut icon" href="img/favicon.png" type="image/png">
+	<link href="css/style.css" rel="stylesheet">
+	<script src="scripts/script.js" defer></script>
+</head>
+
+<body>
+
+	<div class="wrapper">
+		<div class="game">
+			<div class="game__container">
+				<h1 class="game__title">Mix-Or-Match</h1>
+				<div class="game__info">
+					<div class="game__time">
+						Time: <span id="time-remaining">100</span>
+					</div>
+					<div class="game__flips">
+						Flips: <span id="flips">0</span>
+					</div>
+				</div>
+				<div class="game__cards">
+					<div class="game__card card" data-game-value="eye">
+						<div class="card__front">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/eye.webp" type="image/webp">
+								<img class="card__value" src="img/eye.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="bat">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/bat.webp" type="image/webp">
+								<img class="card__value" src="img/bat.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="bones">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/bones.webp" type="image/webp">
+								<img class="card__value" src="img/bones.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="cauldron">
+						<div class="card__front">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/cauldron.webp" type="image/webp">
+								<img class="card__value" src="img/cauldron.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="dracula">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/dracula.webp" type="image/webp">
+								<img class="card__value" src="img/dracula.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="ghost">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/ghost.webp" type="image/webp">
+								<img class="card__value" src="img/ghost.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="pumpkin">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/pumpkin.webp" type="image/webp">
+								<img class="card__value" src="img/pumpkin.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="skull">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/skull.webp" type="image/webp">
+								<img class="card__value" src="img/skull.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="eye">
+						<div class="card__front">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/eye.webp" type="image/webp">
+								<img class="card__value" src="img/eye.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="bat">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/bat.webp" type="image/webp">
+								<img class="card__value" src="img/bat.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="bones">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/bones.webp" type="image/webp">
+								<img class="card__value" src="img/bones.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="cauldron">
+						<div class="card__front">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/cauldron.webp" type="image/webp">
+								<img class="card__value" src="img/cauldron.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="dracula">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/dracula.webp" type="image/webp">
+								<img class="card__value" src="img/dracula.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="ghost">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/ghost.webp" type="image/webp">
+								<img class="card__value" src="img/ghost.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="pumpkin">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/pumpkin.webp" type="image/webp">
+								<img class="card__value" src="img/pumpkin.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="skull">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/skull.webp" type="image/webp">
+								<img class="card__value" src="img/skull.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="hat">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/hat.webp" type="image/webp">
+								<img class="card__value" src="img/hat.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+					<div class="game__card card" data-game-value="hat">
+						<div class="card__front  _hidden">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right _grey" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__value-holder">
+								<source srcset="img/hat.webp" type="image/webp">
+								<img class="card__value" src="img/hat.png" alt="">
+							</picture>
+						</div>
+						<div class="card__back ">
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _top-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-left" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture>
+								<source srcset="img/cobweb.webp" type="image/webp">
+								<img class="card__cobweb _bottom-right" src="img/Cobweb.png" alt="">
+							</picture>
+							<picture class="card__spider-holder">
+								<source srcset="img/spider.webp" type="image/webp">
+								<img class="card__spider" src="img/spider.png" alt="">
+							</picture>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="overlay" data-overlay="start">
+		<div class="overlay__container">
+			<div class="overlay__text">
+				<p class="overlay__text-big">Click to Start</p>
+			</div>
+		</div>
+	</div>
+	<div class="overlay _hidden" data-overlay="end">
+		<div class="overlay__container">
+			<div class="overlay__text">
+				<p class="overlay__text-big">GAME OVER</p>
+				<p class="overlay__text-small">Click to Restart</p>
+			</div>
+		</div>
+	</div>
+	<div class="overlay _hidden" data-overlay="victory">
+		<div class="overlay__container">
+			<div class="overlay__text">
+				<p class="overlay__text-big">VICTORY</p>
+				<p class="overlay__text-small">Click to Restart</p>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>
